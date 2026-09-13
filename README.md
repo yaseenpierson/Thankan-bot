@@ -1,71 +1,113 @@
-# 🚰 Useless-Bot: The Anti-Hydration Cup Robot 🏃💨
+# 🚰 Thankan-Bot: The Anti-Hydration Cup Robot 🏃💨
 
-> *"You will never drink water in peace again."*
+> *"You will never drink your water in peace again."*
 
-[![Version](https://img.shields.io/badge/version-v1.0_Alpha-blue.svg)](https://github.com/MaxonXOXO/Useless-bot)
-[![Hardware](https://img.shields.io/badge/platform-Arduino-00979D.svg)](https://www.arduino.cc/)
+[![Version](https://img.shields.io/badge/version-v1.0_Alpha-blue.svg)](https://github.com/yaseenpierson/Thankan-bot)
+[![Hardware](https://img.shields.io/badge/microcontroller-ESP32-E7352C.svg)](https://www.espressif.com/)
+[![Display](https://img.shields.io/badge/display-0.91%22_OLED_SSD1306-00979D.svg)](#)
 [![Meme Level](https://img.shields.io/badge/meme%20level-100%25-orange.svg)](#)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-A motorized desktop companion with a singular, chaotic mission: **preventing you from drinking your water**. Whenever you reach for your cup, Useless-Bot detects your hand, executes high-speed evasive maneuvers across your desk, and blasts meme sound effects and voice clips from its onboard SD card module.
+**Thankan-Bot** is an autonomous desktop cup-carrier robot designed with one chaotic mission: **preventing you from drinking your water**. The moment your hand approaches your cup, Thankan-Bot's 5-way IR sensory array triggers, changing its animated OLED eyes to panic or rage, blasting situational meme audio via its onboard DFPlayer Mini, and speeding away across your desk.
 
 ---
 
-## 🎯 The Purpose
+## 🎯 The Premise
 
-Most robots aim to make human lives easier. **Useless-Bot exists to bring sheer chaos to your hydration routine.**
+Most robots aim to assist humans. **Thankan-Bot exists to deny your hydration.**
 
-- You get thirsty.
-- You reach out to grab your cup.
-- The bot senses your attempt.
-- **It books it across your desk while screaming meme audio.**
+- 💧 You get thirsty.
+- 🖐️ You reach for your cup.
+- ⚡ 5x IR proximity sensors spot your hand approaching from any angle.
+- 🤖 Thankan-Bot's animated OLED eyes shift from peaceful/happy to horrified or furious.
+- 🔊 It cuts the calm background music, queues up screaming meme sounds, and sprints away in the opposite direction.
 
 ---
 
 ## ✨ Features
 
-- 🏎️ **Autonomous Tactical Evasion**: Senses approaching hands and speeds away in random or calculated evasive trajectories.
-- 🔊 **Dynamic SD-Card Meme Audio**: Plays situational sound bites (e.g., *"Why are you running?"*, panic screams, metal pipe falling, Eurobeat drift themes) while in active escape mode.
-- 🥛 **Integrated Cup Carrier**: Built to hold your cup/beverage while actively refusing to let you touch it.
-- ⚡ **Lightweight & Agile**: Responsive motor drive designed for quick desk maneuvers.
+- 🏎️ **5-Way Tactical Evasion**: 5 strategically placed IR proximity sensors detect hands from the front, front-left, front-right, left, and right, calculating the safest escape path.
+- 🤖 **Expressive OLED Eyes (Vector / Cozmo Style)**: Integrated 0.91" 128x64 SSD1306 OLED screen with animated robotic eyes featuring smooth scaling, idle breathing, blinking, and dynamic expressions:
+  - **Happy / Idle**: Gentle eye breathing & alternating pulses with a smile.
+  - **Surprised / Scared**: Eyes widen dramatically when danger is detected right in front.
+  - **Angry**: Furrowed eyebrows when escaping flanked threats.
+  - **Confused**: Unequal eye sizes with a question mark when startled from the sides.
+  - **Sleepy, Focused, and Wink** modes.
+- 🔊 **Dynamic DFPlayer Meme Audio Subsystem**:
+  - **Rest Mode**: Loops chill resting background music (`003.mp3`, `007.mp3`).
+  - **Evasion Mode**: Interrupts instantly on new stimuli to fire rotating evasion meme clips (`001.mp3`, `004.mp3`, `006.mp3`, `008.mp3`).
+- ⚡ **Non-Blocking Evasion Loop**: State-machine architecture using `millis()` timing and rising-edge sensor detection so animations, motor movements, and audio play seamlessly without stutter.
+- 💻 **Serial Debug & Test Console**: Switch expressions directly via Serial Monitor commands (`EXPR_HAPPY`, `EXPR_ANGRY`, `EXPR_SURPRISED`, etc.).
 
 ---
 
-## 🛠️ Hardware Stack
+## 🧠 Evasion Matrix & Behavior
 
-| Component | Description |
-|---|---|
-| **Microcontroller** | Arduino (Nano / Uno) or ESP32 |
-| **Audio Module** | DFPlayer Mini / MicroSD Card Module + Speaker |
-| **Storage** | MicroSD Card formatted with sound effects & meme audio |
-| **Sensors** | Ultrasonic (HC-SR04) / IR Proximity / ToF Sensor for hand detection |
-| **Motor Driver** | Dual H-Bridge Motor Driver (TB6612FNG / L298N / L9110S) |
-| **Motors** | Micro N20 DC Gear Motors with high-grip rubber wheels |
-| **Power** | 7.4V 2S LiPo / 18650 Battery pack + Voltage Regulator |
+Thankan-Bot senses threat vectors and chooses its reaction in real time:
 
----
-
-## 🚀 Future Roadmap
-
-- [ ] 🤖 **Expressive OLED Eyes**: Vector & Cozmo-inspired animated robotic eyes via I2C OLED display (SSD1306) showing panic, anger, and smugness.
-- [ ] 🛑 **Desk Edge Detection**: Downward-facing IR cliff sensors so it doesn't commit desk suicide while fleeing.
-- [ ] 🔄 **Advanced Evasion Maneuvers**: Fake-out reverses, drift turns, and erratic zig-zag escapes.
-- [ ] 📱 **Remote Taunt Mode**: BLE / WiFi companion control for manual triggers.
+| Sensor Triggered | Threat Direction | OLED Expression | Motor Maneuver | Audio State |
+|---|---|---|---|---|
+| **None** | Clear / Rest | **Happy / Idle** | Stopped | Plays rest track (`003.mp3` / `007.mp3`) |
+| **IR1** | Front | **Surprised** 😳 | Reverse (350 ms) | Next evasion meme |
+| **IR2** | Front-Left | **Angry** 😠 | Reverse Right (400 ms) | Next evasion meme |
+| **IR3** | Front-Right | **Angry** 😠 | Reverse Left (400 ms) | Next evasion meme |
+| **IR4** | Left | **Confused** 🤨 | Tank Turn Right (450 ms) | Next evasion meme |
+| **IR5** | Right | **Confused** 🤨 | Tank Turn Left (450 ms) | Next evasion meme |
+| **Multiple** | Flanked / Cornered | **Angry / Surprised** | Evades toward side with least danger | Next evasion meme |
 
 ---
 
-## 📁 SD Card Audio Setup
+## 🛠️ Hardware & Pin Configuration (ESP32)
 
-Place formatted `.mp3` or `.wav` audio files on the root or designated folder of your FAT32 formatted MicroSD card:
+### 1. Motors (Dual H-Bridge Driver)
+| Pin Name | ESP32 GPIO | Description |
+|---|---|---|
+| `IN1` | **GPIO 25** | Left Motor Forward |
+| `IN2` | **GPIO 26** | Left Motor Reverse |
+| `IN3` | **GPIO 27** | Right Motor Forward |
+| `IN4` | **GPIO 14** | Right Motor Reverse |
+
+### 2. IR Proximity Sensors (Active LOW)
+| Sensor | ESP32 GPIO | Placement |
+|---|---|---|
+| `IR1` | **GPIO 32** | Front |
+| `IR2` | **GPIO 33** | Front-Left |
+| `IR3` | **GPIO 34** | Front-Right |
+| `IR4` | **GPIO 35** | Left |
+| `IR5` | **GPIO 13** | Right |
+
+### 3. DFPlayer Mini Audio Module
+| DFPlayer Pin | ESP32 GPIO | Description |
+|---|---|---|
+| `TX` | **GPIO 16 (RX2)** | Serial Data to ESP32 |
+| `RX` | **GPIO 17 (TX2)** | Serial Data from ESP32 (use 1kΩ resistor in series) |
+| `VCC` / `GND` | 5V / GND | Power |
+| `SPK_1` / `SPK_2` | Speaker | 3W 8Ω Speaker |
+
+### 4. OLED Display (0.91" 128x64 SSD1306 I2C)
+| OLED Pin | ESP32 GPIO | Description |
+|---|---|---|
+| `SDA` | **GPIO 21** | I2C Data |
+| `SCL` | **GPIO 22** | I2C Clock |
+| `VCC` | 3.3V / 5V | Power |
+| `GND` | GND | Ground |
+
+---
+
+## 📁 MicroSD Card Audio Track Setup
+
+Format your MicroSD card to **FAT32** and place numbered MP3 files in the root or `/mp3/` directory:
 
 ```
-SD_CARD/
-├── mp3/
-│   ├── 0001_why_are_you_running.mp3
-│   ├── 0002_run_vine_boom.mp3
-│   ├── 0003_gas_gas_gas.mp3
-│   ├── 0004_cant_touch_this.mp3
-│   └── 0005_screaming_cowboy.mp3
+MicroSD Card/
+├── 001.mp3   <-- Evasion 1 (e.g., "Why are you running?")
+├── 002.mp3   <-- Optional sound bite
+├── 003.mp3   <-- Rest track A (chill elevator / waiting theme)
+├── 004.mp3   <-- Evasion 2 (e.g., Vine boom / screaming)
+├── 005.mp3   <-- Optional sound bite
+├── 006.mp3   <-- Evasion 3 (e.g., Metal pipe falling / anime gasp)
+├── 007.mp3   <-- Rest track B (peaceful tune)
+└── 008.mp3   <-- Evasion 4 (e.g., Eurobeat drift theme)
 ```
 
 ---
@@ -74,32 +116,48 @@ SD_CARD/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/MaxonXOXO/Useless-bot.git
-cd Useless-bot
+git clone https://github.com/yaseenpierson/Thankan-bot.git
+cd Thankan-bot
 ```
 
-### 2. Open in Arduino IDE
-1. Open [`Bot.ino`](Bot.ino) in the **Arduino IDE**.
-2. Install necessary libraries via the Library Manager:
-   - `DFRobotDFPlayerMini` (or your SD/Audio library)
-   - `SoftwareSerial` (if using Arduino Nano/Uno for DFPlayer)
-   - `Wire` & `Adafruit_SSD1306` (for future OLED eye integration)
-3. Select your board and COM port, then click **Upload**.
+### 2. Install Required Libraries
+In the **Arduino IDE** (Library Manager) or **PlatformIO**, install:
+- **Adafruit SSD1306**
+- **Adafruit GFX Library**
+- **DFRobotDFPlayerMini**
+
+### 3. Upload to ESP32
+1. Open [`Bot.ino`](Bot.ino) in Arduino IDE.
+2. Under **Tools > Board**, select your ESP32 Dev Module (e.g., `DOIT ESP32 DEVKIT V1` or `ESP32 Dev Module`).
+3. Select your COM port.
+4. Click **Upload**.
 
 ---
 
-## 🤝 Contributing
+## 🕹️ Serial Debugging & Expression Testing
 
-Got funny audio clip ideas or smoother evasion algorithms? Pull requests and issues are welcome!
+Open the Arduino Serial Monitor at **115200 baud** to test eye expressions live:
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/MemeEvasion`)
-3. Commit your Changes (`git commit -m "Add new drift evasion logic"`)
-4. Push to the Branch (`git push origin feature/MemeEvasion`)
-5. Open a Pull Request
+- `EXPR_HAPPY` - Happy face with smile
+- `EXPR_SURPRISED` - Wide shocked eyes
+- `EXPR_ANGRY` - Angry eyes with eyebrows
+- `EXPR_CONFUSED` - Asymmetric eyes with question mark
+- `EXPR_SLEEPY` - Narrow relaxed eyes
+- `EXPR_FOCUSED` - Narrow squinting eyes
+- `EXPR_WINK` - Winking expression
+- `EXPR_IDLE` - Default breathing & blinking
+- `STATUS` - Print current active expression mode
+
+---
+
+## 🚀 Future Roadmap
+
+- [ ] 🛑 **Cliff Detection**: Downward-pointing IR sensors to stop Thankan from driving off the edge of the desk.
+- [ ] 🔄 **Erratic Spin Maneuvers**: Random 360° spin taunts when user hesitation is detected.
+- [ ] 📱 **BLE / Web App Controller**: Trigger remote taunts and override driving from a phone browser.
 
 ---
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for details.
