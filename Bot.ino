@@ -284,6 +284,16 @@ bool oldIR5 = false;
 
 
 // ============================================================
+// EVASION RUN DISTANCE / DURATIONS (MILLISECONDS)
+// Increase these to make the robot run even further!
+// ============================================================
+
+const unsigned long RUN_STRAIGHT_DURATION = 2000;  // 2.0s straight reverse escape
+const unsigned long RUN_CURVE_DURATION    = 2200;  // 2.2s curved reverse escape
+const unsigned long RUN_CORNERED_DURATION = 2500;  // 2.5s maximum flee escape
+
+
+// ============================================================
 // TIMING
 // ============================================================
 
@@ -896,60 +906,60 @@ void performEvasion(
   int leftDanger = (ir2 ? 1 : 0) + (ir4 ? 1 : 0);
   int rightDanger = (ir3 ? 1 : 0) + (ir5 ? 1 : 0);
 
-  // IR1 ONLY (Front) -> Reverse straight
+  // IR1 ONLY (Front) -> Reverse straight far
   if (ir1 && !ir2 && !ir3 && !ir4 && !ir5) {
-    Serial.println("IR1 -> REVERSE");
+    Serial.println("IR1 -> REVERSE (FAR)");
     setAnimationMode(MODE_SURPRISED);
-    startReverse(350);
+    startReverse(RUN_STRAIGHT_DURATION);
     return;
   }
 
-  // IR2 ONLY (Front-Left) -> Escape Right
+  // IR2 ONLY (Front-Left) -> Escape Right far
   if (ir2 && !ir1 && !ir3 && !ir4 && !ir5) {
-    Serial.println("IR2 -> ESCAPE RIGHT");
+    Serial.println("IR2 -> ESCAPE RIGHT (FAR)");
     setAnimationMode(MODE_ANGRY);
-    startReverseRight(400);
+    startReverseRight(RUN_CURVE_DURATION);
     return;
   }
 
-  // IR3 ONLY (Front-Right) -> Escape Left
+  // IR3 ONLY (Front-Right) -> Escape Left far
   if (ir3 && !ir1 && !ir2 && !ir4 && !ir5) {
-    Serial.println("IR3 -> ESCAPE LEFT");
+    Serial.println("IR3 -> ESCAPE LEFT (FAR)");
     setAnimationMode(MODE_ANGRY);
-    startReverseLeft(400);
+    startReverseLeft(RUN_CURVE_DURATION);
     return;
   }
 
-  // IR4 ONLY (Left) -> Quick turn Right
+  // IR4 ONLY (Left) -> Escape Right far
   if (ir4 && !ir1 && !ir2 && !ir3 && !ir5) {
-    Serial.println("IR4 -> QUICK RIGHT");
+    Serial.println("IR4 -> ESCAPE RIGHT (FAR)");
     setAnimationMode(MODE_CONFUSED);
-    startTankRight(450);
+    startReverseRight(RUN_CURVE_DURATION);
     return;
   }
 
-  // IR5 ONLY (Right) -> Quick turn Left
+  // IR5 ONLY (Right) -> Escape Left far
   if (ir5 && !ir1 && !ir2 && !ir3 && !ir4) {
-    Serial.println("IR5 -> QUICK LEFT");
+    Serial.println("IR5 -> ESCAPE LEFT (FAR)");
     setAnimationMode(MODE_CONFUSED);
-    startTankLeft(450);
+    startReverseLeft(RUN_CURVE_DURATION);
     return;
   }
 
   // MULTIPLE SENSORS
   Serial.println("MULTIPLE SENSORS DETECTED");
   if (leftDanger > rightDanger) {
-    Serial.println("LEFT MORE BLOCKED -> ESCAPE RIGHT");
+    Serial.println("LEFT MORE BLOCKED -> ESCAPE RIGHT (FAR)");
     setAnimationMode(MODE_ANGRY);
-    startReverseRight(500);
+    startReverseRight(RUN_CORNERED_DURATION);
   } else if (rightDanger > leftDanger) {
-    Serial.println("RIGHT MORE BLOCKED -> ESCAPE LEFT");
+    Serial.println("RIGHT MORE BLOCKED -> ESCAPE LEFT (FAR)");
     setAnimationMode(MODE_ANGRY);
-    startReverseLeft(500);
+    startReverseLeft(RUN_CORNERED_DURATION);
   } else {
-    Serial.println("BOTH SIDES BLOCKED -> REVERSE");
+    Serial.println("BOTH SIDES BLOCKED -> REVERSE (FAR)");
     setAnimationMode(MODE_SURPRISED);
-    startReverse(500);
+    startReverse(RUN_CORNERED_DURATION);
   }
 }
 
