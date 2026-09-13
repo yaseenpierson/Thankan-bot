@@ -146,8 +146,11 @@ For Hardware:
 *Demo video showing user reaching for water, Thankan-Bot's eyes changing from happy to panic, blasting meme audio, and speeding away*
 
 # Additional Demos
-[Add any extra demo materials/links]
-- Serial Monitor expression testing commands (`EXPR_HAPPY`, `EXPR_SURPRISED`, `EXPR_ANGRY`, `EXPR_CONFUSED`, `EXPR_SLEEPY`, `EXPR_FOCUSED`, `EXPR_WINK`, `EXPR_IDLE`, `STATUS`)
+*Documentation throughout the project*
+https://drive.google.com/file/d/1y5uOrfP0WlqsNASPV9h6ayxsi6qQ9-iM/view?usp=sharing
+https://drive.google.com/file/d/1W8FmkaNLK84z_idjyPa8yIchk7I18zRK/view?usp=drive_link
+https://drive.google.com/file/d/1lnDd9SrVkjNJ5L4jVkcsEy9SVKLQPazB/view?usp=sharing
+
 
 ## Team Contributions
 - Gautham D: Chassis design, mechanical cup-holder assembly, power distribution, motor driver wiring, and hardware evasion testing.
