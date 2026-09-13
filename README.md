@@ -133,10 +133,10 @@ For Hardware:
 
 *Assembling the chassis, mounting 5-directional IR sensor perimeter, and wiring motor driver*
 
-[url=https://postimg.cc/fV7g4Cvn][img]https://i.postimg.cc/fV7g4Cvn/Whats-App-Image-2026-09-13-at-10-32-01.jpg[/img][/url]
-[url=https://postimg.cc/hX83Fs1k][img]https://i.postimg.cc/hX83Fs1k/Whats-App-Image-2026-09-13-at-10-32-34.jpg[/img][/url]
-[url=https://postimg.cc/21dXpGxN][img]https://i.postimg.cc/21dXpGxN/Whats-App-Image-2026-09-13-at-10-32-02.jpg[/img][/url]
+<img width="900" height="1600" alt="WhatsApp Image 2026-09-13 at 10 32 34" src="https://github.com/user-attachments/assets/c20c2723-c70c-4d50-beb5-9c1b0b235dd5" />
 
+<img width="900" height="1600" alt="WhatsApp Image 2026-09-13 at 10 32 01" src="https://github.com/user-attachments/assets/58a6df18-fa8a-4338-9bd7-2c00874b03db" />
+<img width="900" height="1600" alt="WhatsApp Image 2026-09-13 at 10 32 02" src="https://github.com/user-attachments/assets/a6800b92-f86c-44e4-b6eb-6a221d1af3dd" />
 
 *Final Thankan-Bot assembly with cup holder platform and animated OLED face*
 
