@@ -142,7 +142,7 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[https://drive.google.com/file/d/1OBb7Ue-YaubfuzuwmgnZghm4_YXmT3aV/view?usp=sharing]
 *Demo video showing user reaching for water, Thankan-Bot's eyes changing from happy to panic, blasting meme audio, and speeding away*
 
 # Additional Demos
