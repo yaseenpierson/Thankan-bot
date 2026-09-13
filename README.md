@@ -128,13 +128,16 @@ For Hardware:
 | **SSD1306 OLED** | SCL | GPIO 22 | I2C Clock |
 
 # Build Photos
-![Components]()
 *All components: ESP32, 5x IR sensors, DFPlayer Mini, 128x64 OLED, motor driver, DC gear motors, speaker, battery*
 
-![Build]()
+
 *Assembling the chassis, mounting 5-directional IR sensor perimeter, and wiring motor driver*
 
-![Final]()
+[url=https://postimg.cc/fV7g4Cvn][img]https://i.postimg.cc/fV7g4Cvn/Whats-App-Image-2026-09-13-at-10-32-01.jpg[/img][/url]
+[url=https://postimg.cc/hX83Fs1k][img]https://i.postimg.cc/hX83Fs1k/Whats-App-Image-2026-09-13-at-10-32-34.jpg[/img][/url]
+[url=https://postimg.cc/21dXpGxN][img]https://i.postimg.cc/21dXpGxN/Whats-App-Image-2026-09-13-at-10-32-02.jpg[/img][/url]
+
+
 *Final Thankan-Bot assembly with cup holder platform and animated OLED face*
 
 ### Project Demo
