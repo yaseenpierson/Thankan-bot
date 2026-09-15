@@ -6,7 +6,7 @@
 
 
 ## Basic Details
-### Team Name: Thankan Squad
+### Team Name: CyberLife
 
 
 ### Team Members
