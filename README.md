@@ -124,11 +124,12 @@ For Hardware:
 ### Project Demo
 # Video
 [https://drive.google.com/file/d/1OBb7Ue-YaubfuzuwmgnZghm4_YXmT3aV/view?usp=sharing]
+
 *Demo video showing user reaching for water, Thankan-Bot's eyes changing from happy to panic, blasting meme audio, and speeding away*
 
 # Additional Demos
 *Documentation throughout the project*
-*All the behind the scenes videos are here!"
+*All the behind the scenes videos are here!*
 https://drive.google.com/drive/folders/1rkOPIKH-pm-439sFepw7gMlXd4NHLRVs?usp=drive_link
 
 
