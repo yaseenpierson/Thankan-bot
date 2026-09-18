@@ -75,21 +75,6 @@ Install required libraries in Arduino IDE via Library Manager:
 ```
 
 ### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1]()
-*Expression Mode: Happy / Idle breathing face with smile rendered on SSD1306 OLED*
-
-![Screenshot2]()
-*Expression Mode: Surprised / Scared eyes triggered when a hand approaches directly from the front*
-
-![Screenshot3]()
-*Expression Mode: Angry eyes with furrowed eyebrows during tactical evasion maneuver*
-
-# Diagrams
-![Workflow]()
-*System Architecture & Decision Workflow: 5x IR Proximity Grid -> ESP32 Non-blocking State Machine -> OLED Eye Expressions + DFPlayer Meme Audio + Dual Motor Evasion*
 
 ```mermaid
 graph TD
