@@ -89,11 +89,7 @@ graph TD
 For Hardware:
 
 # Schematic & Circuit
-![Circuit]()
-*Circuit connections between ESP32, 5x IR sensors, DFPlayer Mini, OLED, and Motor Driver*
-
-![Schematic]()
-*Hardware schematic and wiring diagram*
+<img width="1196" height="852" alt="Screenshot 2026-09-18 214513" src="https://github.com/user-attachments/assets/6e231f1d-bad0-4d0b-97a6-fdd7ae89d7b3" />
 
 #### Pin Connection Schema:
 | Module | Module Pin | ESP32 GPIO | Description |
