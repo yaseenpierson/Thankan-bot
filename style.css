@@ -1,0 +1,2070 @@
+/* ============================================================
+   THANKAN-BOT: Forensic Engineering Dossier & Case File
+   Case File: THK-BOT-001 // TinkerHub Useless Projects 3.0
+   Saintgits College of Engineering // Team CyberLife
+   Aesthetic: Classified Forensic Engineering Case File / SCP Dossier
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Noto+Sans+Malayalam:wght@400;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+:root {
+  --bg-main: #0a0c10;
+  --bg-surface: #11141a;
+  --bg-surface-elevated: #161a22;
+  --bg-code: #06080b;
+  --bg-dossier: #0d1015;
+  
+  --border-subtle: #1c212a;
+  --border-medium: #272f3c;
+  --border-strong: #3d4758;
+  
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #545d68;
+  
+  --tech-cyan: #38bdf8;
+  --tech-cyan-dim: rgba(56, 189, 248, 0.1);
+  --tech-amber: #d29922;
+  --tech-amber-dim: rgba(210, 153, 34, 0.12);
+  --tech-red: #f85149;
+  --tech-red-dim: rgba(248, 81, 73, 0.12);
+  --tech-green: #3fb950;
+  --tech-green-dim: rgba(63, 185, 80, 0.12);
+  
+  --font-editorial: 'Space Grotesk', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+  --font-handwritten: 'Caveat', cursive;
+  --font-malayalam: 'Noto Sans Malayalam', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-editorial);
+  line-height: 1.6;
+  font-size: 14.5px;
+  overflow-x: hidden;
+  
+  /* Subtle forensic engineering paper grid */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ============================================================
+   TYPOGRAPHY HIERARCHY
+   ============================================================ */
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+.font-editorial { font-family: var(--font-editorial); }
+.font-handwritten { 
+  font-family: var(--font-handwritten);
+  font-size: 1.25rem;
+  color: var(--tech-amber);
+  line-height: 1.2;
+}
+.font-malayalam { font-family: var(--font-malayalam); }
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Classified Stamps & Badges */
+.classified-stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border: 1px solid var(--tech-red);
+  color: var(--tech-red);
+  background: var(--tech-red-dim);
+  user-select: none;
+}
+
+.classified-stamp.amber {
+  border-color: var(--tech-amber);
+  color: var(--tech-amber);
+  background: var(--tech-amber-dim);
+}
+
+.classified-stamp.cyan {
+  border-color: var(--tech-cyan);
+  color: var(--tech-cyan);
+  background: var(--tech-cyan-dim);
+}
+
+.classified-stamp.green {
+  border-color: var(--tech-green);
+  color: var(--tech-green);
+  background: var(--tech-green-dim);
+}
+
+.stamp-skew {
+  transform: rotate(-2deg);
+}
+
+.evidence-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--tech-cyan);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 2px 8px;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   CLASSIFIED DOSSIER TOPBAR & NAV
+   ============================================================ */
+
+.dossier-topbar {
+  border-bottom: 1px solid var(--border-subtle);
+  background: #07090c;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 100;
+  line-height: 1.4;
+}
+
+.dossier-meta-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dossier-meta-left span.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--tech-red);
+  border-radius: 50%;
+  margin-right: 5px;
+  box-shadow: 0 0 6px var(--tech-red);
+  animation: pulseBlink 1.4s infinite;
+}
+
+@keyframes pulseBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.dossier-links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dossier-links a {
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.dossier-links a:hover {
+  color: var(--tech-cyan);
+}
+
+/* Forensic Navigation Bar (Strict non-overlapping single row with overflow scroll) */
+.dossier-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(10, 12, 16, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-medium);
+  z-index: 95;
+  padding: 0 20px;
+}
+
+.nav-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  flex-wrap: nowrap;
+  padding: 4px 0;
+  gap: 16px;
+}
+
+.nav-case-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.case-id-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.case-subject-tag {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  border-left: 1px solid var(--border-medium);
+  padding-left: 8px;
+  white-space: nowrap;
+}
+
+.nav-sections-list {
+  display: flex;
+  gap: 3px;
+  list-style: none;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 4px 0;
+  align-items: center;
+}
+
+.nav-sections-list::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-sections-list li {
+  flex-shrink: 0;
+}
+
+.nav-sections-list a {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  color: var(--text-secondary);
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.nav-sections-list a:hover {
+  color: #fff;
+  background: var(--bg-surface);
+  border-color: var(--border-subtle);
+}
+
+.nav-btn-repo {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-btn-repo:hover {
+  background: var(--text-primary);
+  color: #000;
+}
+
+/* ============================================================
+   CONTAINER & EDITORIAL SECTION UTILITIES
+   ============================================================ */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.dossier-section {
+  padding: 75px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.section-dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 34px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-medium);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-code-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.section-heading {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.section-subtext {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 500px;
+  text-align: right;
+  font-family: var(--font-editorial);
+}
+
+.has-registration-marks {
+  position: relative;
+}
+.has-registration-marks::before,
+.has-registration-marks::after {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--border-strong);
+  pointer-events: none;
+}
+.has-registration-marks::before { top: 6px; left: 8px; }
+.has-registration-marks::after { bottom: 6px; right: 8px; }
+
+/* ============================================================
+   HERO SECTION: FORENSIC INVESTIGATION DOSSIER
+   ============================================================ */
+
+.hero-dossier {
+  padding: 45px 0 65px;
+  border-bottom: 1px solid var(--border-medium);
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.hero-dossier-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-header-strip {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.hero-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.hero-subtitle-thesis {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--tech-amber);
+  margin-bottom: 16px;
+  border-left: 3px solid var(--tech-amber);
+  padding-left: 12px;
+}
+
+.hero-summary-statement {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 620px;
+  margin-bottom: 22px;
+}
+
+.hero-malayalam-threat-banner {
+  font-family: var(--font-malayalam);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(248, 81, 73, 0.08);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  border-left: 4px solid var(--tech-red);
+  padding: 10px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Forensic Telemetry Matrix */
+.hero-telemetry-dossier {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 16px;
+  margin-bottom: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.telemetry-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.telemetry-cell .t-key {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.telemetry-cell .t-data {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.telemetry-cell .t-data.alert { color: var(--tech-red); }
+.telemetry-cell .t-data.good { color: var(--tech-green); }
+.telemetry-cell .t-data.warn { color: var(--tech-amber); }
+
+.hero-action-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-dossier {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  background: var(--text-primary);
+  color: #000;
+  border: 1px solid var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-dossier:hover {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn-dossier-subtle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-dossier-subtle:hover {
+  border-color: var(--tech-cyan);
+  color: var(--tech-cyan);
+}
+
+/* HERO RIGHT: FORENSIC SPECIMEN PLATE */
+.hero-dossier-right {
+  position: relative;
+}
+
+.specimen-forensic-plate {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 16px;
+  position: relative;
+}
+
+.plate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.plate-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #040609;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.plate-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: contrast(1.02);
+}
+
+/* Numbered Evidence Callouts - Clean Grid List below/beside rather than overlapping all over face */
+.plate-callouts-manifest {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.plate-callout-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  background: #080a0e;
+  border: 1px solid var(--border-subtle);
+}
+
+.plate-callout-row .tag {
+  font-weight: 700;
+}
+.plate-callout-row .name {
+  color: var(--text-secondary);
+}
+
+.plate-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ============================================================
+   SECTION 01: WHY DOES THIS EXIST?
+   ============================================================ */
+
+.motive-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+}
+
+.motive-stage {
+  padding: 26px 18px;
+  border-right: 1px solid var(--border-medium);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.motive-stage:last-child {
+  border-right: none;
+  background: rgba(248, 81, 73, 0.03);
+}
+
+.motive-step-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.motive-step-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tech-cyan);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.motive-step-body {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.motive-step-footer {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.motive-stage::after {
+  content: "→";
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  z-index: 5;
+}
+
+.motive-stage:last-child::after {
+  display: none;
+}
+
+.motive-verdict-box {
+  margin-top: 24px;
+  border: 1px solid var(--border-medium);
+  background: #080a0e;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.verdict-item h4 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.verdict-item p {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   SECTION 02: PHYSICAL ANATOMY (FRAMED PHOTO EVIDENCE)
+   ============================================================ */
+
+.forensic-anatomy-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+}
+
+.forensic-plates-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.forensic-plate {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 12px;
+}
+
+.forensic-plate.full-width {
+  grid-column: span 2;
+}
+
+/* Reduced zoom / contain photo frames */
+.plate-img-box {
+  width: 100%;
+  height: 270px;
+  background: #020305;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.forensic-plate.full-width .plate-img-box {
+  height: 360px;
+  padding: 16px;
+}
+
+.plate-img-box img {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Decreased zoom: shows full uncropped device */
+  background: #000;
+  transition: transform 0.2s ease;
+}
+
+.plate-caption-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Parts Manifest Sidebar */
+.parts-manifest-sidebar {
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+  padding: 22px;
+}
+
+.parts-manifest-sidebar h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #fff;
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.manifest-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.manifest-item {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.manifest-item:last-child {
+  border-bottom: none;
+}
+
+.manifest-code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--tech-cyan);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.manifest-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.manifest-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   SECTION 03: TECHNICAL SPECIFICATIONS / DATASHEET
+   ============================================================ */
+
+.datasheet-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 24px;
+}
+
+.datasheet-meta-strip {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.datasheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.datasheet-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #07090c;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  border-bottom: 1px solid var(--border-medium);
+  text-transform: uppercase;
+}
+
+.datasheet-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.datasheet-table tr:hover td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.datasheet-table .c-name { font-weight: 700; color: #fff; }
+.datasheet-table .c-spec { color: var(--text-secondary); }
+.datasheet-table .c-reality { color: var(--tech-amber); }
+
+.schematic-dossier-box {
+  margin-top: 32px;
+  border: 1px solid var(--border-medium);
+  background: #07090c;
+  padding: 20px;
+}
+
+.schematic-dossier-box h4 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--tech-cyan);
+  margin-bottom: 10px;
+}
+
+.schematic-img-frame {
+  width: 100%;
+  border: 1px solid var(--border-subtle);
+  background: #000;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.schematic-img-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================================
+   SECTION 04: THREAT DETECTION MATRIX (TACTICAL RADAR)
+   ============================================================ */
+
+.tactical-radar-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.tactical-radar-console {
+  background: #07090c;
+  border: 1px solid var(--border-medium);
+  padding: 20px;
+}
+
+.radar-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.radar-scope-view {
+  width: 100%;
+  height: 330px;
+  border: 1px dashed var(--border-medium);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #0f141d 0%, #06080b 70%);
+}
+
+.radar-circle {
+  position: absolute;
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.circle-1 { width: 90px; height: 90px; }
+.circle-2 { width: 190px; height: 190px; }
+.circle-3 { width: 290px; height: 290px; }
+
+.radar-cup-target {
+  width: 76px;
+  height: 76px;
+  border: 2px solid var(--tech-cyan);
+  border-radius: 50%;
+  background: #141b25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.tactical-sensor-btn {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 5px 9px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  cursor: pointer;
+  z-index: 25;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tactical-sensor-btn:hover,
+.tactical-sensor-btn.active {
+  background: var(--tech-red);
+  color: #fff;
+  border-color: var(--tech-red);
+  box-shadow: 0 0 10px rgba(248, 81, 73, 0.5);
+}
+
+.t-ir1 { top: 16px; left: 50%; transform: translateX(-50%); }
+.t-ir2 { top: 58px; left: 30px; }
+.t-ir3 { top: 58px; right: 30px; }
+.t-ir4 { top: 50%; left: 12px; transform: translateY(-50%); }
+.t-ir5 { top: 50%; right: 12px; transform: translateY(-50%); }
+
+.tactical-feedback-strip {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--tech-cyan);
+  display: flex;
+  justify-content: space-between;
+}
+
+.tactical-response-list {
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+}
+
+.tactical-vector-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: grid;
+  grid-template-columns: 75px 1.2fr 1fr;
+  gap: 14px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  transition: background 0.15s ease;
+}
+
+.tactical-vector-item:hover,
+.tactical-vector-item.active {
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.tactical-vector-item:last-child {
+  border-bottom: none;
+}
+
+.t-gpio { font-weight: 700; color: var(--tech-cyan); }
+.t-trigger { color: var(--text-primary); }
+.t-response { color: var(--tech-amber); font-weight: 600; }
+
+/* ============================================================
+   SECTION 05: EMOTIONAL COMPUTING (PSYCH EVAL)
+   ============================================================ */
+
+.psych-console-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.psych-live-engine {
+  background: #000;
+  border: 2px solid var(--border-medium);
+  padding: 18px;
+}
+
+.psych-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1c2430;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.oled-emulation-box {
+  background: #050b14;
+  border: 1px solid #00d2ff;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.2);
+}
+
+.oled-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.psych-control-strip {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.psych-status-readout {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--tech-cyan);
+  padding: 8px 12px;
+  background: #090e16;
+  border: 1px solid var(--border-subtle);
+}
+
+.psych-mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.psych-mode-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 8px 6px;
+  background: #101621;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  z-index: 10;
+}
+
+.psych-mode-btn:hover,
+.psych-mode-btn.active {
+  background: var(--tech-cyan);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--tech-cyan);
+}
+
+.psych-reference-sheet {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 22px;
+}
+
+.psych-reference-sheet h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.psych-reference-sheet p {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.psych-states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.psych-state-card {
+  border: 1px solid var(--border-subtle);
+  background: #07090c;
+  padding: 10px 12px;
+}
+
+.psych-state-ascii {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  color: var(--tech-cyan);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.psych-state-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.psych-state-trigger {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   SECTION 06: AUDIO EVIDENCE ARCHIVE
+   ============================================================ */
+
+.audio-evidence-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 24px;
+}
+
+.audio-archive-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  background: #07090c;
+  border: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.audio-archive-meta .meta-label {
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.audio-archive-meta .meta-val {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.audio-evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.audio-evidence-item {
+  background: #080b0f;
+  border: 1px solid var(--border-medium);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transition: border-color 0.15s ease;
+}
+
+.audio-evidence-item:hover {
+  border-color: var(--tech-amber);
+}
+
+.audio-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-file-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.audio-case-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.audio-transcript-ml {
+  font-family: var(--font-malayalam);
+  font-size: 0.94rem;
+  color: var(--tech-amber);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.audio-play-trigger {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.audio-play-trigger:hover {
+  background: var(--tech-amber);
+  color: #000;
+  border-color: var(--tech-amber);
+}
+
+/* ============================================================
+   SECTION 07: EXPERIMENT 001 (LABORATORY TEST BENCH)
+   ============================================================ */
+
+.experiment-dossier-box {
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+  padding: 22px;
+}
+
+.experiment-bench-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bench-instruction-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.bench-instruction-text strong {
+  color: var(--tech-cyan);
+}
+
+.experiment-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+}
+
+.bench-test-chamber {
+  height: 420px;
+  background: #06080b;
+  border: 1px dashed var(--border-strong);
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Simulated Robot Subject */
+.bench-subject-actor {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  transition: left 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28), top 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28), transform 0.15s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.subject-disc-body {
+  width: 100%;
+  height: 100%;
+  background: #141821;
+  border: 2px solid var(--tech-cyan);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+}
+
+.subject-disc-body.panic {
+  border-color: var(--tech-red);
+  box-shadow: 0 0 25px rgba(248, 81, 73, 0.6);
+  animation: jitterShake 0.1s infinite;
+}
+
+@keyframes jitterShake {
+  0% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, -1px); }
+}
+
+.subject-cup-slot {
+  width: 44px;
+  height: 44px;
+  background: #0f172a;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.subject-oled-box {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--tech-cyan);
+  background: #000;
+  border: 1px solid #1e293b;
+  padding: 1px 6px;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+.bench-hand-cursor {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-size: 2rem;
+  z-index: 30;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+.bench-speech-bubble {
+  position: absolute;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-malayalam);
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 6px 14px;
+  border: 1px solid #000;
+  pointer-events: none;
+  z-index: 40;
+  white-space: nowrap;
+  transform: translate(-50%, -140%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bench-telemetry-column {
+  border: 1px solid var(--border-medium);
+  background: #07090c;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+}
+
+.bench-telemetry-header {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.telemetry-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #11141a;
+  font-size: 0.76rem;
+}
+
+.telemetry-stat-row .k { color: var(--text-muted); }
+.telemetry-stat-row .v { color: #fff; font-weight: 600; }
+.telemetry-stat-row .v.alert { color: var(--tech-red); }
+.telemetry-stat-row .v.good { color: var(--tech-green); }
+
+.bench-log-section {
+  margin-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bench-log-title {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.bench-log-stream {
+  background: #040507;
+  border: 1px solid var(--border-subtle);
+  padding: 8px;
+  height: 130px;
+  overflow-y: auto;
+  font-size: 0.66rem;
+  color: #7dd3fc;
+  line-height: 1.4;
+}
+
+.log-entry {
+  margin-bottom: 3px;
+  font-family: var(--font-mono);
+}
+.log-entry.warn { color: var(--tech-amber); }
+.log-entry.alert { color: var(--tech-red); }
+
+/* ============================================================
+   SECTION 08: CRIMES COMMITTED & INCIDENT LOG
+   ============================================================ */
+
+.crimes-incidents-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.crimes-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 22px;
+}
+
+.crimes-box h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--tech-red);
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.crimes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.crime-row {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.crime-num {
+  color: var(--tech-red);
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+
+.crime-desc {
+  color: var(--text-primary);
+}
+
+.incidents-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 22px;
+}
+
+.incidents-box h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--tech-amber);
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.incident-logs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.incident-log-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.incident-log-entry .log-text {
+  color: var(--text-primary);
+}
+
+.incident-log-entry .log-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+/* ============================================================
+   SECTION 09: KNOWN FAILURE MODES
+   ============================================================ */
+
+.failure-dossier-table {
+  width: 100%;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.failure-dossier-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: #07090c;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  border-bottom: 1px solid var(--border-medium);
+  text-transform: uppercase;
+}
+
+.failure-dossier-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.failure-dossier-table .code-tag {
+  color: var(--tech-red);
+  font-weight: 700;
+  width: 65px;
+}
+
+.failure-dossier-table .f-title {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.failure-dossier-table .f-mech {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.failure-dossier-table .f-behavior {
+  color: var(--tech-amber);
+}
+
+.failure-dossier-table .f-action {
+  color: var(--tech-cyan);
+}
+
+/* ============================================================
+   SECTION 10: OPERATOR MANUAL & PERFORMANCE BENCHMARK
+   ============================================================ */
+
+.manual-dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.manual-dossier-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 22px;
+}
+
+.manual-dossier-card h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #fff;
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.sop-steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.sop-step {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.sop-step-num { color: var(--tech-cyan); font-weight: 700; font-size: 0.72rem; }
+.sop-step-text { color: var(--text-primary); }
+
+.sop-warning-box {
+  margin-top: 18px;
+  background: rgba(248, 81, 73, 0.08);
+  border-left: 3px solid var(--tech-red);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-primary);
+}
+
+.benchmark-dossier-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.benchmark-dossier-table td {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.benchmark-dossier-table .param-label { color: var(--text-muted); }
+.benchmark-dossier-table .param-val { text-align: right; color: var(--text-primary); font-weight: 600; }
+.benchmark-dossier-table .param-val.alert { color: var(--tech-red); }
+
+/* ============================================================
+   SECTION 11: THE MALAYALAM INCIDENT ARCHIVE
+   ============================================================ */
+
+.incident-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.incident-archive-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.incident-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.incident-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.incident-card-dialogue {
+  font-family: var(--font-malayalam);
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--tech-amber);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.incident-card-notes {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-top: auto;
+}
+
+/* ============================================================
+   SECTION 12: FIELD NOTES (FRAMED WORKSHOP JOURNAL)
+   ============================================================ */
+
+.journal-entries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.journal-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 14px;
+}
+
+/* Reduced zoom for field notes */
+.journal-photo-box {
+  width: 100%;
+  height: 280px;
+  background: #05070a;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.journal-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Decreased zoom: clean framing */
+  background: #000;
+}
+
+.journal-day-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--tech-cyan);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.journal-entry-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.journal-entry-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.journal-annotation {
+  margin-top: 8px;
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 6px;
+}
+
+/* ============================================================
+   SECTION 13: PERSONNEL FILES
+   ============================================================ */
+
+.personnel-dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.personnel-file {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.personnel-file-id {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--tech-muted);
+  margin-bottom: 6px;
+}
+
+.personnel-name-h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.personnel-role-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--tech-amber);
+  margin-bottom: 10px;
+}
+
+.personnel-college-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.personnel-offences-box {
+  background: #07090c;
+  border: 1px solid var(--border-subtle);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+.personnel-offences-box strong {
+  color: var(--tech-red);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Easter Egg: Denial Protocol */
+.easter-egg-denial-box {
+  background: #080a0e;
+  border: 1px dashed var(--tech-amber);
+  padding: 16px 20px;
+  margin: 36px auto 0;
+  max-width: 720px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.denial-msg {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.btn-deny {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 7px 16px;
+  background: var(--tech-amber);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CLASSIFIED FOOTER
+   ============================================================ */
+
+.dossier-footer {
+  border-top: 1px solid var(--border-medium);
+  background: #07090c;
+  padding: 45px 0 32px;
+}
+
+.footer-dossier-columns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 36px;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.footer-dossier-brand h4 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.footer-dossier-brand p {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  max-width: 380px;
+}
+
+.footer-nav-group h5 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.footer-nav-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.footer-nav-group a {
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+
+.footer-nav-group a:hover {
+  color: var(--tech-cyan);
+}
+
+.footer-case-closed-gauge {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  padding: 14px;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-colophon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .hero-layout,
+  .tactical-radar-grid,
+  .psych-console-grid,
+  .forensic-anatomy-grid,
+  .manual-dossier-grid,
+  .experiment-split-layout,
+  .crimes-incidents-grid {
+    grid-template-columns: 1fr;
+  }
+  .motive-timeline {
+    grid-template-columns: 1fr 1fr;
+  }
+  .motive-stage:nth-child(2) {
+    border-right: none;
+  }
+  .incident-archive-grid,
+  .journal-entries-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-sections-list { display: none; }
+  .hero-main-title { font-size: 2.8rem; }
+  .motive-timeline { grid-template-columns: 1fr; }
+  .motive-stage { border-right: none; border-bottom: 1px solid var(--border-medium); }
+  .motive-stage::after { display: none; }
+  .forensic-plates-column { grid-template-columns: 1fr; }
+  .forensic-plate.full-width { grid-column: span 1; }
+  .audio-evidence-grid,
+  .personnel-dossier-grid,
+  .incident-archive-grid,
+  .journal-entries-grid,
+  .footer-dossier-columns,
+  .motive-verdict-box { grid-template-columns: 1fr; }
+  .hero-telemetry-dossier { grid-template-columns: 1fr; }
+  .audio-archive-meta { grid-template-columns: 1fr 1fr; }
+  .section-dossier-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .section-subtext { text-align: left; }
+}
